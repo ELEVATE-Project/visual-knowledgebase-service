@@ -19,7 +19,7 @@ require("@configs");
 
 const app = express();
 
-// Health check
+// Health checks
 require("@health-checks")(app);
 
 app.use(cors());
