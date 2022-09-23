@@ -1,8 +1,8 @@
 /**
  * name : services/helper/userentity.js
- * author : Aman
- * created-date : 02-Nov-2021
- * Description : user entity reltaed information.
+ * author : Ankit Shahu
+ * created-date : 23-Sept-2022
+ * Description : topic related operations.
  */
 
 // Dependencies

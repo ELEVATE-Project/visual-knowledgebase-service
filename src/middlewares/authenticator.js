@@ -1,10 +1,3 @@
-/**
- * name : middlewares/authenticator
- * author : Aman Kumar Gupta
- * Date : 04-Nov-2021
- * Description : Validating authorized requests
- */
-
 const jwt = require("jsonwebtoken");
 
 const httpStatusCode = require("@generics/http-status");

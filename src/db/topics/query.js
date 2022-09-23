@@ -1,8 +1,8 @@
 /**
  * name : models/entities/query
- * author : Aman Gupta
- * Date : 04-Nov-2021
- * Description : Users entities database operations
+ * author : Ankit Shahu
+ * Date : 23-Sept-2022
+ * Description : Topics query
  */
 
 // Dependencies
