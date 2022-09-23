@@ -9,11 +9,12 @@ const validator = require("@middlewares/validator");
 const authenticator = require("@middlewares/authenticator");
 const pagination = require("@middlewares/pagination");
 const expressValidator = require("express-validator");
+const fs = require("fs");
 
 module.exports = (app) => {
   app.use(authenticator);
   app.use(pagination);
-  //  app.use(expressValidator())
+  app.use(expressValidator());
 
   async function router(req, res, next) {
     let controllerResponse;
@@ -23,6 +24,7 @@ module.exports = (app) => {
     try {
       validationError = req.validationErrors();
     } catch (error) {
+      console.log(error);
       error.statusCode = 422;
       error.responseCode = "CLIENT_ERROR";
       return next(error);
@@ -39,7 +41,21 @@ module.exports = (app) => {
     try {
       let controller;
       if (req.params.file) {
-        controller = require(`@controllers/${req.params.version}/${req.params.controller}/${req.params.file}`);
+        let folderExists = fs.existsSync(
+          PROJECT_ROOT_DIRECTORY +
+            "/controllers/" +
+            req.params.version +
+            "/" +
+            req.params.controller +
+            "/" +
+            req.params.file +
+            ".js"
+        );
+        if (folderExists) {
+          controller = require(`@controllers/${req.params.version}/${req.params.controller}/${req.params.file}`);
+        } else {
+          controller = require(`@controllers/${req.params.version}/${req.params.controller}`);
+        }
       } else {
         controller = require(`@controllers/${req.params.version}/${req.params.controller}`);
       }
@@ -47,6 +63,7 @@ module.exports = (app) => {
         ? await new controller()[req.params.method](req)
         : next();
     } catch (error) {
+      console.log(error);
       // If controller or service throws some random error
       return next(error);
     }
@@ -60,12 +77,14 @@ module.exports = (app) => {
       /* If error obtained then global error handler gets executed */
       return next(controllerResponse);
     }
-    res.status(controllerResponse.statusCode).json({
-      responseCode: controllerResponse.responseCode,
-      message: req.t(controllerResponse.message),
-      result: controllerResponse.result,
-      meta: controllerResponse.meta,
-    });
+    if (controllerResponse) {
+      res.status(controllerResponse.statusCode).json({
+        responseCode: controllerResponse.responseCode,
+        message: req.t(controllerResponse.message),
+        result: controllerResponse.result,
+        meta: controllerResponse.meta,
+      });
+    }
   }
 
   app.all(

@@ -15,11 +15,12 @@ const endpoints = require("@constants/endpoints");
 module.exports = async function (req, res, next) {
   try {
     let internalAccess = false;
+
     let guestUrl = false;
 
     const authHeader = req.get("X-auth-token");
 
-    common.internalAccessUrs.map(function (path) {
+    common.internalAccessUrls.map(function (path) {
       if (req.path.includes(path)) {
         if (
           req.headers.internal_access_token &&
@@ -61,6 +62,14 @@ module.exports = async function (req, res, next) {
         authHeaderArray[1],
         process.env.ACCESS_TOKEN_SECRET
       );
+      if (decodedToken.data.role == "admin") {
+        req.decodedToken = {
+          _id: decodedToken.data._id,
+          email: decodedToken.data.email,
+        };
+        next();
+        return;
+      }
     } catch (err) {
       err.statusCode = httpStatusCode.unauthorized;
       err.responseCode = "UNAUTHORIZED";
@@ -104,6 +113,7 @@ module.exports = async function (req, res, next) {
     };
     next();
   } catch (err) {
+    console.log(err);
     next(err);
   }
 };
