@@ -11,9 +11,9 @@ const pagination = require("@middlewares/pagination");
 const expressValidator = require("express-validator");
 
 module.exports = (app) => {
-  app.use(authenticator);
+  // app.use(authenticator);
   app.use(pagination);
-  //  app.use(expressValidator())
+  app.use(expressValidator());
 
   async function router(req, res, next) {
     let controllerResponse;

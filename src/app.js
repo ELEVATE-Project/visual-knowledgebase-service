@@ -3,6 +3,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const expressFileUpload = require("express-fileupload");
+const i18next = require("i18next");
+const Backend = require("i18next-fs-backend");
+const middleware = require("i18next-http-middleware");
 
 require("dotenv").config({ path: "./.env" });
 
@@ -17,12 +20,29 @@ if (!environmentData.success) {
 
 require("@configs");
 
+i18next
+  .use(Backend)
+  .use(middleware.LanguageDetector)
+  .init({
+    fallbackLng: "en",
+    lng: "en",
+    ns: ["translation"],
+    defaultNS: "translation",
+    backend: {
+      loadPath: "./locales/{{lng}}.json",
+    },
+    detection: {
+      lookupHeader: "accept-language",
+    },
+  });
+
 const app = express();
 
 // Health checks
 require("@health-checks")(app);
 
 app.use(cors());
+app.use(middleware.handle(i18next));
 
 app.use(bodyParser.urlencoded({ extended: true, limit: "50MB" }));
 app.use(bodyParser.json({ limit: "50MB" }));
