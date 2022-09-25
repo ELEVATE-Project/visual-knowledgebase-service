@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const expressFileUpload = require("express-fileupload");
+const path = require("path");
 const i18next = require("i18next");
 const Backend = require("i18next-fs-backend");
 const middleware = require("i18next-http-middleware");
@@ -46,7 +47,7 @@ app.use(middleware.handle(i18next));
 
 app.use(bodyParser.urlencoded({ extended: true, limit: "50MB" }));
 app.use(bodyParser.json({ limit: "50MB" }));
-
+app.use(middleware.handle(i18next));
 app.use(express.static("public"));
 app.use(expressFileUpload());
 //  app.get(process.env.API_DOC_URL, function (req, res) {

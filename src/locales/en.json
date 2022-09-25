@@ -1,0 +1,5 @@
+{
+  "UNAUTHORIZED_REQUEST": "Unauthorized request",
+  "TOPIC_ALREADY_EXISTS": "Topic already exist",
+  "TOPIC_CREATED_SUCCESSFULLY": "Topic created successfully"
+}
