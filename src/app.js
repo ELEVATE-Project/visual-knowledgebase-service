@@ -47,7 +47,7 @@ app.use(middleware.handle(i18next));
 
 app.use(bodyParser.urlencoded({ extended: true, limit: "50MB" }));
 app.use(bodyParser.json({ limit: "50MB" }));
-app.use(middleware.handle(i18next));
+
 app.use(express.static("public"));
 app.use(expressFileUpload());
 //  app.get(process.env.API_DOC_URL, function (req, res) {
