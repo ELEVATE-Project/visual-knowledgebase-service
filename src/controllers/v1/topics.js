@@ -6,16 +6,12 @@
  */
 
 // Dependencies
-// const accountHelper = require("@services/helper/account");
-const common = require("@constants/common");
-const httpStatusCode = require("@generics/http-status");
+ß;
 const topicsHelper = require("@services/helper/topics");
 
 module.exports = class Account {
   async create(req) {
     try {
-      console.log(req.method);
-
       const createdTopicEntity = await topicsHelper.create(
         req.body,
         req.decodedToken._id
@@ -28,7 +24,6 @@ module.exports = class Account {
 
   async update(req) {
     try {
-      console.log(req.decodedToken);
       const updateTopicEntity = await topicsHelper.update(
         req.params.id,
         req.body,
@@ -36,7 +31,6 @@ module.exports = class Account {
       );
       return updateTopicEntity;
     } catch (error) {
-      console.log(error);
       return error;
     }
   }
