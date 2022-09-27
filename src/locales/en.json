@@ -1,5 +1,8 @@
 {
   "UNAUTHORIZED_REQUEST": "Unauthorized request",
   "TOPIC_ALREADY_EXISTS": "Topic already exist",
-  "TOPIC_CREATED_SUCCESSFULLY": "Topic created successfully"
+  "TOPIC_CREATED_SUCCESSFULLY": "Topic created successfully.",
+  "TOPIC_UPDATED_SUCCESSFULLY": "Topic updated successfully.",
+  "TOPIC_NOT_FOUND": "Topic not found",
+  "TOPIC_ID_INVALID": "Topic Id is invalid."
 }

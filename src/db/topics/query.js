@@ -31,4 +31,27 @@ module.exports = class UserEntityData {
       }
     });
   }
+
+  static updateOneForm(filter, update, options = {}) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const res = await Topics.updateOne(filter, update, options);
+        if (
+          (res.n === 1 && res.nModified === 1) ||
+          (res.matchedCount === 1 && res.modifiedCount === 1)
+        ) {
+          resolve("TOPIC_UPDATED");
+        } else if (
+          (res.n === 1 && res.nModified === 0) ||
+          (res.matchedCount === 1 && res.modifiedCount === 0)
+        ) {
+          resolve("TOPIC_ALREADY_EXISTS");
+        } else {
+          resolve("TOPIC_NOT_FOUND");
+        }
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
 };
