@@ -6,7 +6,6 @@
  */
 
 // Dependencies
-ß;
 const topicsHelper = require("@services/helper/topics");
 
 module.exports = class Account {
