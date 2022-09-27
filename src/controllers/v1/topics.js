@@ -14,13 +14,29 @@ const topicsHelper = require("@services/helper/topics");
 module.exports = class Account {
   async create(req) {
     try {
-      console.log(req.decodedToken);
-      const createdUserEntity = await topicsHelper.create(
+      console.log(req.method);
+
+      const createdTopicEntity = await topicsHelper.create(
         req.body,
         req.decodedToken._id
       );
-      return createdUserEntity;
+      return createdTopicEntity;
     } catch (error) {
+      return error;
+    }
+  }
+
+  async update(req) {
+    try {
+      console.log(req.decodedToken);
+      const updateTopicEntity = await topicsHelper.update(
+        req.params.id,
+        req.body,
+        req.decodedToken._id
+      );
+      return updateTopicEntity;
+    } catch (error) {
+      console.log(error);
       return error;
     }
   }

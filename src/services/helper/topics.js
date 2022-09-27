@@ -45,4 +45,52 @@ module.exports = class topicsHelper {
       throw error;
     }
   }
+
+  /**
+   * update topic
+   * @method
+   * @name update
+   * @param {Object} bodyData - entity information
+   * @param {string} _id - user id.
+   * @returns {JSON} - returns updated entity information
+   */
+  static async update(id, bodyData, _id) {
+    bodyData.updatedBy = ObjectId(_id);
+    try {
+      let filter = {};
+      if (ObjectId.isValid(id)) {
+        filter = {
+          _id: ObjectId(id),
+        };
+      } else {
+        return common.failureResponse({
+          message: "TOPIC_ID_INVALID",
+          statusCode: httpStatusCode.bad_request,
+          responseCode: "CLIENT_ERROR",
+        });
+      }
+      const result = await topics.updateOneForm(filter, bodyData, {});
+
+      if (result === "TOPIC_ALREADY_EXISTS") {
+        return common.failureResponse({
+          message: "TOPIC_ALREADY_EXISTS",
+          statusCode: httpStatusCode.bad_request,
+          responseCode: "CLIENT_ERROR",
+        });
+      } else if (result === "ENTITY_NOT_FOUND") {
+        return common.failureResponse({
+          message: "TOPIC_NOT_FOUND",
+          statusCode: httpStatusCode.bad_request,
+          responseCode: "CLIENT_ERROR",
+        });
+      }
+
+      return common.successResponse({
+        statusCode: httpStatusCode.accepted,
+        message: "TOPIC_UPDATED_SUCCESSFULLY",
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
 };
