@@ -1,0 +1,233 @@
+{
+  "info": {
+    "_postman_id": "3192cc4e-b359-4c23-b966-0db0d8e94836",
+    "name": "Knowledge-base",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "21498549"
+  },
+  "item": [
+    {
+      "name": "file-upload",
+      "item": [
+        {
+          "name": "get Signed Url",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-auth-token",
+                "value": "bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "",
+                "value": "",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/knowledgebase/v1/cloud-services/getSignedUrl?fileName=laptop1.jpg&dynamicPath=test",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["knowledgebase", "v1", "cloud-services", "getSignedUrl"],
+              "query": [
+                {
+                  "key": "fileName",
+                  "value": "laptop1.jpg"
+                },
+                {
+                  "key": "dynamicPath",
+                  "value": "test"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Downloadeable URL",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-auth-token",
+                "value": "bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/knowledgebase/v1/cloud-services/getDownloadableUrl?filePath=users/62832531a05cbd57b273aebb-1654149589875-image.jpg",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": [
+                "knowledgebase",
+                "v1",
+                "cloud-services",
+                "getDownloadableUrl"
+              ],
+              "query": [
+                {
+                  "key": "filePath",
+                  "value": "users/62832531a05cbd57b273aebb-1654149589875-image.jpg"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "suggestion",
+      "item": [
+        {
+          "name": "CREATE",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {
+              "content-type": true
+            }
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"blog\": \"string html code\",\n    \"attachments\": [\n      {\n        \"type\": \"image\",\n        \"url\": \"www.google.com/image-name\"\n      },\n      {\n        \"type\": \"pdf\",\n        \"url\": \"www.google.com/pdf-name\"\n      }\n    ]\n  }\n"
+            },
+            "url": {
+              "raw": "http://localhost:8000/visual-knowledgebase-service/v1/suggestion/create",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": [
+                "visual-knowledgebase-service",
+                "v1",
+                "suggestion",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UPDATE",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {
+              "content-type": true
+            }
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"blog\": \"string html code for blog test\",\n    \"attachments\": []\n  }\n"
+            },
+            "url": {
+              "raw": "http://localhost:8000/visual-knowledgebase-service/v1/suggestion/create/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": [
+                "visual-knowledgebase-service",
+                "v1",
+                "suggestion",
+                "create",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {
+              "content-type": true
+            }
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/visual-knowledgebase-service/v1/suggestion/delete/632fdb9124ed31b1b4fc1f5e",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": [
+                "visual-knowledgebase-service",
+                "v1",
+                "suggestion",
+                "delete",
+                "632fdb9124ed31b1b4fc1f5e"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "READ",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true,
+            "disabledSystemHeaders": {
+              "content-type": true
+            }
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/visual-knowledgebase-service/v1/suggestion/read/632fdc1b9cee17237109fc0a",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": [
+                "visual-knowledgebase-service",
+                "v1",
+                "suggestion",
+                "read",
+                "632fdc1b9cee17237109fc0a"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
