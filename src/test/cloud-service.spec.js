@@ -4,7 +4,7 @@
  * created-date : 27-Sep-2022
  * Description : Cloud services unit test.
  */
-describe("User profile api test", () => {
+describe("Cloud-service", () => {
   const mongoose = require("mongoose");
   const OLD_ENV = process.env;
   beforeEach(() => {
