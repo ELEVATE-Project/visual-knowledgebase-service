@@ -1,0 +1,32 @@
+version: "3"
+services:
+  mongo:
+    image: "mongo:4.4.14"
+    restart: "always"
+    ports:
+      - "27017:27017"
+    networks:
+      - knowledgebase_net
+    volumes:
+      - mongo-data:/data/db
+    logging:
+      driver: none
+  knowledgebase:
+    build: "./"
+    image: elevate/knowledgebase:1.0
+    volumes:
+      - ./src/:/var/src
+    ports:
+      - "8000:8000"
+    command: ["nodemon", "app.js"]
+    environment:
+      - MONGODB_URL=mongodb://mongo:27017/elevate-knowledgebase
+    depends_on:
+      - mongo
+    networks:
+      - knowledgebase_net
+networks:
+  knowledgebase_net:
+    external: false
+volumes:
+  mongo-data:
