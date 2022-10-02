@@ -8,13 +8,14 @@
 // Dependencies
 
 const Topics = require("./model");
+const ObjectId = require("mongoose").Types.ObjectId;
 
 module.exports = class UserEntityData {
   static createTopic(data) {
     return new Promise(async (resolve, reject) => {
       try {
-        await new Topics(data).save();
-        resolve(true);
+        let result = await new Topics(data).save();
+        resolve(result);
       } catch (error) {
         reject(error);
       }
@@ -49,6 +50,22 @@ module.exports = class UserEntityData {
         } else {
           resolve("TOPIC_NOT_FOUND");
         }
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+  static deleteOneTopic(_id) {
+    const filter = {
+      _id: ObjectId(_id),
+    };
+    return new Promise(async (resolve, reject) => {
+      try {
+        const res = await Topics.findOneAndDelete(filter);
+        res == null
+          ? resolve("TOPIC_DELETION_FAILED")
+          : resolve("TOPIC_DELETED_SUCCESSFULLY");
       } catch (error) {
         reject(error);
       }

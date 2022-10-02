@@ -11,6 +11,8 @@ const topicsHelper = require("@services/helper/topics");
 module.exports = class Account {
   async create(req) {
     try {
+      req["decodedToken"] = { _id: "507f1f77bcf86cd799439011" }; //Until authentication is implemented.
+
       if (req.method == "POST") {
         const createdTopicEntity = await topicsHelper.create(
           req.body,
@@ -41,6 +43,23 @@ module.exports = class Account {
         const readTopicEntity = await topicsHelper.readTopics(req.params.id);
         return readTopicEntity;
       }
+    } catch (error) {
+      return error;
+    }
+  }
+  /**
+   * deletes topic
+   * @method
+   * @name delete
+   * @param {Object} req - request data.
+   * @returns {JSON} - suggestion deletion response.
+   */
+
+  async delete(req) {
+    const _id = req.params.id;
+    try {
+      const removedTopic = await topicsHelper.delete(_id);
+      return removedTopic;
     } catch (error) {
       return error;
     }
