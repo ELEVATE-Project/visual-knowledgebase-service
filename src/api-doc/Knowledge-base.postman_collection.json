@@ -1,85 +1,11 @@
 {
   "info": {
-    "_postman_id": "3192cc4e-b359-4c23-b966-0db0d8e94836",
-    "name": "Knowledge-base",
+    "_postman_id": "73ab5edc-f631-475d-895c-425203633f6b",
+    "name": "visual-knowledge-base",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "21498549"
   },
   "item": [
-    {
-      "name": "file-upload",
-      "item": [
-        {
-          "name": "get Signed Url",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-auth-token",
-                "value": "bearer {{token}}",
-                "type": "text"
-              },
-              {
-                "key": "",
-                "value": "",
-                "type": "text",
-                "disabled": true
-              }
-            ],
-            "url": {
-              "raw": "http://localhost:8000/knowledgebase/v1/cloud-services/getSignedUrl?fileName=laptop1.jpg&dynamicPath=test",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8000",
-              "path": ["knowledgebase", "v1", "cloud-services", "getSignedUrl"],
-              "query": [
-                {
-                  "key": "fileName",
-                  "value": "laptop1.jpg"
-                },
-                {
-                  "key": "dynamicPath",
-                  "value": "test"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Downloadeable URL",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-auth-token",
-                "value": "bearer {{token}}",
-                "type": "text"
-              }
-            ],
-            "url": {
-              "raw": "http://localhost:8000/knowledgebase/v1/cloud-services/getDownloadableUrl?filePath=users/62832531a05cbd57b273aebb-1654149589875-image.jpg",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8000",
-              "path": [
-                "knowledgebase",
-                "v1",
-                "cloud-services",
-                "getDownloadableUrl"
-              ],
-              "query": [
-                {
-                  "key": "filePath",
-                  "value": "users/62832531a05cbd57b273aebb-1654149589875-image.jpg"
-                }
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
     {
       "name": "suggestion",
       "item": [
@@ -222,6 +148,140 @@
                 "suggestion",
                 "read",
                 "632fdc1b9cee17237109fc0a"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "topic",
+      "item": [
+        {
+          "name": "CREATE",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {
+              "content-type": true
+            }
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"topicName\": \"testNew\",\n    \"description\": \"test\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/knowledgebase/v1/topics/create",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["knowledgebase", "v1", "topics", "create"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {
+              "content-type": true
+            }
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/knowledgebase/v1/topics/delete/6339ab4bb0719dc0a39cfb1a",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": [
+                "knowledgebase",
+                "v1",
+                "topics",
+                "delete",
+                "6339ab4bb0719dc0a39cfb1a"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "file-upload",
+      "item": [
+        {
+          "name": "get Signed Url",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-auth-token",
+                "value": "bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "",
+                "value": "",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/user/v1/cloud-services/file/getSignedUrl?fileName=laptop1.jpg",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user", "v1", "cloud-services", "file", "getSignedUrl"],
+              "query": [
+                {
+                  "key": "fileName",
+                  "value": "laptop1.jpg"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Signed Url",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-auth-token",
+                "value": "bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{UserDevBaseUrl}}user/v1/cloud-services/file/getSignedUrl?fileName=logo1.jpeg",
+              "host": ["{{UserDevBaseUrl}}user"],
+              "path": ["v1", "cloud-services", "file", "getSignedUrl"],
+              "query": [
+                {
+                  "key": "fileName",
+                  "value": "logo1.jpeg"
+                }
               ]
             }
           },

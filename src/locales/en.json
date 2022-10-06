@@ -14,5 +14,7 @@
   "SUGGESTION_DELETION_FAILED": "suggestion deletion failed",
   "SUGGESTION_DELETED_SUCCESSFULLY": "suggestion deleted successfully",
   "SUGGESTION_NOT_FOUND": "suggestion not found",
-  "SUGGESTION_FETCHED_SUCCESSFULLY": "suggestion details fetched successfully"
+  "SUGGESTION_FETCHED_SUCCESSFULLY": "suggestion details fetched successfully",
+  "TOPIC_DELETION_FAILED": "Topic deletion failed.",
+  "TOPIC_DELETED_SUCCESSFULLY": "Topic deleted successfully."
 }

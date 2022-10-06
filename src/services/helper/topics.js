@@ -35,10 +35,11 @@ module.exports = class topicsHelper {
           responseCode: "CLIENT_ERROR",
         });
       }
-      await topics.createTopic(bodyData);
+      let newTopic = await topics.createTopic(bodyData);
       return common.successResponse({
         statusCode: httpStatusCode.created,
         message: "TOPIC_CREATED_SUCCESSFULLY",
+        result: [newTopic],
       });
     } catch (error) {
       console.log(error);
@@ -88,6 +89,24 @@ module.exports = class topicsHelper {
       return common.successResponse({
         statusCode: httpStatusCode.accepted,
         message: "TOPIC_UPDATED_SUCCESSFULLY",
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
+  static async delete(_id) {
+    try {
+      const result = await topics.deleteOneTopic(_id);
+      if (result === "TOPIC_DELETION_FAILED") {
+        return common.failureResponse({
+          message: result,
+          statusCode: httpStatusCode.bad_request,
+          responseCode: "CLIENT_ERROR",
+        });
+      }
+      return common.successResponse({
+        statusCode: httpStatusCode.accepted,
+        message: result,
       });
     } catch (error) {
       throw error;
