@@ -26,7 +26,11 @@ const topicsSchema = new Schema({
     default: false,
     required: true,
   },
-
+  suggestionId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "suggestions",
+    index: true,
+  },
   createdBy: {
     type: mongoose.Types.ObjectId,
     required: true,

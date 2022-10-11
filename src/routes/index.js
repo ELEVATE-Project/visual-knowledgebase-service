@@ -12,11 +12,12 @@ const expressValidator = require("express-validator");
 const fs = require("fs");
 
 module.exports = (app) => {
-  // app.use(authenticator);
+  app.use(authenticator);
   app.use(pagination);
   app.use(expressValidator());
 
   async function router(req, res, next) {
+    console.log(req.params.version, req.params.controller, req.params.method);
     let controllerResponse;
     let validationError;
 
@@ -59,6 +60,7 @@ module.exports = (app) => {
       } else {
         controller = require(`@controllers/${req.params.version}/${req.params.controller}`);
       }
+      console.log(controller);
       controllerResponse = new controller()[req.params.method]
         ? await new controller()[req.params.method](req)
         : next();
@@ -92,21 +94,22 @@ module.exports = (app) => {
     validator,
     router
   );
+  // app.all(
+  //   process.env.APPLICATION_BASE_URL + ":version/:controller/:file/:method",
+  //   validator,
+  //   router
+  // );
   app.all(
     process.env.APPLICATION_BASE_URL + ":version/:controller/:method/:id",
     validator,
     router
   );
-  app.all(
-    process.env.APPLICATION_BASE_URL + ":version/:controller/:file/:method",
-    validator,
-    router
-  );
-  app.all(
-    process.env.APPLICATION_BASE_URL + ":version/:controller/:file/:method/:id",
-    validator,
-    router
-  );
+
+  // app.all(
+  //   process.env.APPLICATION_BASE_URL + ":version/:controller/:file/:method/:id",
+  //   validator,
+  //   router
+  // );
 
   app.use((req, res, next) => {
     res.status(404).json({

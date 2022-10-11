@@ -55,18 +55,63 @@ module.exports = class UserEntityData {
       }
     });
   }
-
-  static deleteOneTopic(_id) {
-    const filter = {
-      _id: ObjectId(_id),
-    };
+  static findTopics() {
     return new Promise(async (resolve, reject) => {
       try {
-        const res = await Topics.findOneAndDelete(filter);
-        res == null
-          ? resolve("TOPIC_DELETION_FAILED")
-          : resolve("TOPIC_DELETED_SUCCESSFULLY");
+        let filter = {
+          topicId: null,
+          deleted: false,
+        };
+        console.log("reched to qury function");
+        const userEntityData = await Topics.find(filter, {
+          _id: 1,
+          topicName: 1,
+          description: 1,
+          topicId: 1,
+          suggestionId: 1,
+        });
+        console.log(userEntityData);
+        resolve(userEntityData);
       } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+  static findSubTopics(filter) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        filter.topicId = ObjectId(filter.topicId);
+
+        const subTopic = await Topics.aggregate([
+          {
+            $lookup: {
+              from: "suggestions",
+              localField: "suggestionId",
+              foreignField: "_id",
+              as: "suggestion",
+            },
+          },
+          {
+            $match: {
+              $and: [{ topicId: filter.topicId }, { deleted: filter.deleted }],
+            },
+          },
+
+          {
+            $project: {
+              _id: 1,
+              topicName: 1,
+              description: 1,
+              topicId: 1,
+              suggestion: "$suggestion",
+            },
+          },
+        ]);
+        console.log(subTopic);
+        resolve(subTopic);
+      } catch (error) {
+        console.log(error);
         reject(error);
       }
     });

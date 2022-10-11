@@ -8,7 +8,7 @@
 // Dependencies
 const topicsHelper = require("@services/helper/topics");
 
-module.exports = class Account {
+module.exports = class Topics {
   async create(req) {
     try {
       req["decodedToken"] = { _id: "507f1f77bcf86cd799439011" }; //Until authentication is implemented.
@@ -32,7 +32,7 @@ module.exports = class Account {
     }
   }
 
-  async Read(req) {
+  async read(req) {
     try {
       if (req.params.id) {
         const readSubTopicEntity = await topicsHelper.readSubTopics(
@@ -40,7 +40,7 @@ module.exports = class Account {
         );
         return readSubTopicEntity;
       } else {
-        const readTopicEntity = await topicsHelper.readTopics(req.params.id);
+        const readTopicEntity = await topicsHelper.readTopics();
         return readTopicEntity;
       }
     } catch (error) {
