@@ -11,6 +11,8 @@ const ObjectId = require("mongoose").Types.ObjectId;
 const httpStatusCode = require("@generics/http-status");
 const common = require("@constants/common");
 const topics = require("@db/topics/query");
+const res = require("express/lib/response");
+const SuggestionData = require("@db/suggestions/query");
 
 module.exports = class topicsHelper {
   /**
@@ -96,7 +98,13 @@ module.exports = class topicsHelper {
   }
   static async delete(_id) {
     try {
-      const result = await topics.deleteOneTopic(_id);
+      let bodyData = {
+        deleted: true,
+      };
+      let filter = {
+        _id: ObjectId(_id),
+      };
+      const result = await topics.updateOneForm(filter, bodyData, {});
       if (result === "TOPIC_DELETION_FAILED") {
         return common.failureResponse({
           message: result,
@@ -110,6 +118,68 @@ module.exports = class topicsHelper {
       });
     } catch (error) {
       throw error;
+    }
+  }
+
+  static async readTopics() {
+    try {
+      const result = await topics.findTopics();
+      console.log(result);
+      if (!result) {
+        return common.successResponse({
+          statusCode: httpStatusCode.accepted,
+          message: "TOPICS_FETCHED",
+          result: result,
+        });
+      } else {
+        console.log(result);
+        return common.successResponse({
+          statusCode: httpStatusCode.ok,
+          message: "TOPICS_FETCHED",
+          result: result,
+        });
+      }
+    } catch (error) {
+      return error;
+    }
+  }
+
+  static async readSubTopics(topicId) {
+    try {
+      const filter = {
+        topicId: topicId,
+        deleted: false,
+      };
+      // let result = {};
+      const result = await topics.findSubTopics(filter);
+      // result.subTopic = subTopics;
+      if (!result) {
+        return common.failureResponse({
+          statusCode: httpStatusCode.bad_request,
+          message: "NO_SUB_TOPICS_FOUND",
+          result: result,
+        });
+      } else {
+        // let suggestionIds = [];
+        // subTopics.forEach((element) => {
+        //   if (element.suggestionId) {
+        //     suggestionIds.push(element.suggestionId);
+        //   }
+        // });
+        // const suggestion = await SuggestionData.findAllSuggestion(
+        //   { _id: { $in: suggestionIds } },
+        //   {}
+        // );
+        // result.suggestion = suggestion;
+
+        return common.successResponse({
+          statusCode: httpStatusCode.ok,
+          message: "TOPICS_FETCHED",
+          result: result,
+        });
+      }
+    } catch (error) {
+      return error;
     }
   }
 };

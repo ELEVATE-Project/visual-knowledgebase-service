@@ -40,6 +40,9 @@ module.exports = {
   },
   successResponse,
   failureResponse,
-  guestUrls: ["/vks/v1/topics/read"],
+  guestUrls: [
+    "/knowledgebase/v1/topics/read",
+    "/knowledgebase/v1/suggestion/read",
+  ],
   internalAccessUrls: [],
 };

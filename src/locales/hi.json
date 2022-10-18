@@ -6,5 +6,6 @@
   "TOPIC_NOT_FOUND": "Topic not found",
   "TOPIC_ID_INVALID": "Topic Id is invalid.",
   "SIGNED_URL_GENERATED_SUCCESSFULLY": "Signed Url सफलतापूर्वक जेनरेट किया गया",
-  "DOWNLOAD_URL_GENERATED_SUCCESSFULLY": "Download Url सफलतापूर्वक  जेनरेट किया गया"
+  "DOWNLOAD_URL_GENERATED_SUCCESSFULLY": "Download Url सफलतापूर्वक  जेनरेट किया गया",
+  "TOPICS_FETCHED": "Topic fetched successfully."
 }

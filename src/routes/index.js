@@ -12,7 +12,7 @@ const expressValidator = require("express-validator");
 const fs = require("fs");
 
 module.exports = (app) => {
-  // app.use(authenticator);
+  app.use(authenticator);
   app.use(pagination);
   app.use(expressValidator());
 
@@ -59,6 +59,7 @@ module.exports = (app) => {
       } else {
         controller = require(`@controllers/${req.params.version}/${req.params.controller}`);
       }
+      console.log(controller);
       controllerResponse = new controller()[req.params.method]
         ? await new controller()[req.params.method](req)
         : next();
@@ -92,6 +93,7 @@ module.exports = (app) => {
     validator,
     router
   );
+
   app.all(
     process.env.APPLICATION_BASE_URL + ":version/:controller/:method/:id",
     validator,

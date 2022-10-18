@@ -79,4 +79,15 @@ module.exports = class SuggestionData {
       }
     });
   }
+
+  static findAllSuggestion(filter, projection = {}) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const usersData = await Suggestion.find(filter, projection);
+        resolve(usersData);
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
 };
