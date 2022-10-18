@@ -1,9 +1,9 @@
 {
   "info": {
-    "_postman_id": "73ab5edc-f631-475d-895c-425203633f6b",
+    "_postman_id": "e8178cad-63a9-4318-ac1d-5f343c41673d",
     "name": "visual-knowledge-base",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "21498549"
+    "_exporter_id": "7997930"
   },
   "item": [
     {
@@ -23,26 +23,56 @@
                 "key": "Content-Type",
                 "value": "application/json",
                 "type": "text"
+              },
+              {
+                "key": "X-auth-token",
+                "value": "bearer {{VKStoken}}",
+                "type": "text"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"blog\": \"string html code\",\n    \"attachments\": [\n      {\n        \"type\": \"image\",\n        \"url\": \"www.google.com/image-name\"\n      },\n      {\n        \"type\": \"pdf\",\n        \"url\": \"www.google.com/pdf-name\"\n      }\n    ]\n  }\n"
+              "raw": "{\n    \"blog\": \"string html code 2\",\n    \"attachments\": [\n      {\n        \"type\": \"image\",\n        \"url\": \"www.google.com/image-name\"\n      },\n      {\n        \"type\": \"pdf\",\n        \"url\": \"www.google.com/pdf-name\"\n      }\n    ]\n  }\n"
             },
             "url": {
-              "raw": "http://localhost:8000/visual-knowledgebase-service/v1/suggestion/create",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8000",
-              "path": [
-                "visual-knowledgebase-service",
-                "v1",
-                "suggestion",
-                "create"
-              ]
+              "raw": "{{VKSUrl}}knowledgebase/v1/suggestion/create",
+              "host": ["{{VKSUrl}}knowledgebase"],
+              "path": ["v1", "suggestion", "create"]
             }
           },
-          "response": []
+          "response": [
+            {
+              "name": "CREATE",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-auth-token",
+                    "value": "bearer {{VKStoken}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"blog\": \"string html code 2\",\n    \"attachments\": [\n      {\n        \"type\": \"image\",\n        \"url\": \"www.google.com/image-name\"\n      },\n      {\n        \"type\": \"pdf\",\n        \"url\": \"www.google.com/pdf-name\"\n      }\n    ]\n  }\n"
+                },
+                "url": {
+                  "raw": "{{VKSUrl}}knowledgebase/v1/suggestion/create",
+                  "host": ["{{VKSUrl}}knowledgebase"],
+                  "path": ["v1", "suggestion", "create"]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "body": "{\n    \"responseCode\": \"OK\",\n    \"message\": \"suggestion created successfully\",\n    \"result\": [\n        {\n            \"attachments\": [\n                {\n                    \"type\": \"image\",\n                    \"url\": \"www.google.com/image-name\"\n                },\n                {\n                    \"type\": \"pdf\",\n                    \"url\": \"www.google.com/pdf-name\"\n                }\n            ],\n            \"blog\": \"string html code 2\",\n            \"_id\": \"6344db7bb8d7e869b09521b2\",\n            \"updatedAt\": \"2022-10-11T02:56:59.633Z\",\n            \"createdAt\": \"2022-10-11T02:56:59.633Z\",\n            \"__v\": 0\n        }\n    ],\n    \"meta\": {}\n}"
+            }
+          ]
         },
         {
           "name": "UPDATE",
@@ -58,27 +88,61 @@
                 "key": "Content-Type",
                 "value": "application/json",
                 "type": "text"
+              },
+              {
+                "key": "X-auth-token",
+                "value": "bearer {{VKStoken}}",
+                "type": "text"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"blog\": \"string html code for blog test\",\n    \"attachments\": []\n  }\n"
+              "raw": "{\n    \"blog\": \"string html code 2\",\n    \"attachments\": [\n      {\n        \"type\": \"image\",\n        \"url\": \"www.google.com/image-name\"\n      },\n      {\n        \"type\": \"pdf\",\n        \"url\": \"www.google.com/pdf-name\"\n      }\n    ]\n  }\n"
             },
             "url": {
-              "raw": "http://localhost:8000/visual-knowledgebase-service/v1/suggestion/create/",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8000",
-              "path": [
-                "visual-knowledgebase-service",
-                "v1",
-                "suggestion",
-                "create",
-                ""
-              ]
+              "raw": "{{VKSUrl}}knowledgebase/v1/suggestion/create/6344db7bb8d7e869b09521b2",
+              "host": ["{{VKSUrl}}knowledgebase"],
+              "path": ["v1", "suggestion", "create", "6344db7bb8d7e869b09521b2"]
             }
           },
-          "response": []
+          "response": [
+            {
+              "name": "UPDATE",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-auth-token",
+                    "value": "bearer {{VKStoken}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"blog\": \"string html code 2\",\n    \"attachments\": [\n      {\n        \"type\": \"image\",\n        \"url\": \"www.google.com/image-name\"\n      },\n      {\n        \"type\": \"pdf\",\n        \"url\": \"www.google.com/pdf-name\"\n      }\n    ]\n  }\n"
+                },
+                "url": {
+                  "raw": "{{VKSUrl}}knowledgebase/v1/suggestion/create/6344db7bb8d7e869b09521b2",
+                  "host": ["{{VKSUrl}}knowledgebase"],
+                  "path": [
+                    "v1",
+                    "suggestion",
+                    "create",
+                    "6344db7bb8d7e869b09521b2"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "body": "{\n    \"responseCode\": \"OK\",\n    \"message\": \"suggestion updated successfully\",\n    \"result\": [\n        {\n            \"_id\": \"6344db7bb8d7e869b09521b2\",\n            \"attachments\": [\n                {\n                    \"type\": \"image\",\n                    \"url\": \"www.google.com/image-name\"\n                },\n                {\n                    \"type\": \"pdf\",\n                    \"url\": \"www.google.com/pdf-name\"\n                }\n            ],\n            \"blog\": \"string html code 2\",\n            \"updatedAt\": \"2022-10-11T02:57:53.386Z\",\n            \"createdAt\": \"2022-10-11T02:56:59.633Z\",\n            \"__v\": 0\n        }\n    ],\n    \"meta\": {}\n}"
+            }
+          ]
         },
         {
           "name": "DELETE",
@@ -94,6 +158,11 @@
                 "key": "Content-Type",
                 "value": "application/json",
                 "type": "text"
+              },
+              {
+                "key": "X-auth-token",
+                "value": "bearer {{VKStoken}}",
+                "type": "text"
               }
             ],
             "body": {
@@ -101,20 +170,68 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://localhost:8000/visual-knowledgebase-service/v1/suggestion/delete/632fdb9124ed31b1b4fc1f5e",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8000",
+              "raw": "{{VKSUrl}}knowledgebase/v1/suggestion/delete/6344db7bb8d7e869b09521b2",
+              "host": ["{{VKSUrl}}knowledgebase"],
               "path": [
-                "visual-knowledgebase-service",
                 "v1",
                 "suggestion",
                 "delete",
-                "632fdb9124ed31b1b4fc1f5e"
+                "6344db7bb8d7e869b09521b2"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": "",
+                  "disabled": true
+                }
               ]
             }
           },
-          "response": []
+          "response": [
+            {
+              "name": "DELETE",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-auth-token",
+                    "value": "bearer {{VKStoken}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{VKSUrl}}knowledgebase/v1/suggestion/delete/632fdb9124ed31b1b4fc1f5e",
+                  "host": ["{{VKSUrl}}knowledgebase"],
+                  "path": [
+                    "v1",
+                    "suggestion",
+                    "delete",
+                    "632fdb9124ed31b1b4fc1f5e"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "body": "{\n    \"responseCode\": \"OK\",\n    \"message\": \"suggestion deleted successfully\",\n    \"result\": [],\n    \"meta\": {}\n}"
+            }
+          ]
         },
         {
           "name": "READ",
@@ -138,20 +255,44 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://localhost:8000/visual-knowledgebase-service/v1/suggestion/read/632fdc1b9cee17237109fc0a",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8000",
-              "path": [
-                "visual-knowledgebase-service",
-                "v1",
-                "suggestion",
-                "read",
-                "632fdc1b9cee17237109fc0a"
-              ]
+              "raw": "{{VKSUrl}}knowledgebase/v1/suggestion/read/63445a5c38326b262c95e484",
+              "host": ["{{VKSUrl}}knowledgebase"],
+              "path": ["v1", "suggestion", "read", "63445a5c38326b262c95e484"]
             }
           },
-          "response": []
+          "response": [
+            {
+              "name": "READ",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{VKSUrl}}knowledgebase/v1/suggestion/read/632fdc1b9cee17237109fc0a",
+                  "host": ["{{VKSUrl}}knowledgebase"],
+                  "path": [
+                    "v1",
+                    "suggestion",
+                    "read",
+                    "632fdc1b9cee17237109fc0a"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "body": "{\n    \"responseCode\": \"OK\",\n    \"message\": \"suggestion details fetched successfully\",\n    \"result\": [\n        {\n            \"_id\": \"63445a5c38326b262c95e484\",\n            \"attachments\": [\n                {\n                    \"type\": \"image\",\n                    \"url\": \"www.google.com/image-name\"\n                },\n                {\n                    \"type\": \"pdf\",\n                    \"url\": \"www.google.com/pdf-name\"\n                }\n            ],\n            \"blog\": \"string html code\",\n            \"updatedAt\": \"2022-10-10T17:46:04.277Z\",\n            \"createdAt\": \"2022-10-10T17:46:04.277Z\",\n            \"__v\": 0\n        }\n    ],\n    \"meta\": {}\n}"
+            }
+          ]
         }
       ]
     },
@@ -159,7 +300,7 @@
       "name": "topic",
       "item": [
         {
-          "name": "CREATE",
+          "name": "Topic CREATE",
           "protocolProfileBehavior": {
             "disabledSystemHeaders": {
               "content-type": true
@@ -172,21 +313,121 @@
                 "key": "Content-Type",
                 "value": "application/json",
                 "type": "text"
+              },
+              {
+                "key": "X-auth-token",
+                "value": "bearer {{VKStoken}}",
+                "type": "text"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"topicName\": \"testNew\",\n    \"description\": \"test\"\n}"
+              "raw": "{\n    \"topicName\": \"testNewS\",\n    \"description\": \"test\"\n}"
             },
             "url": {
-              "raw": "http://localhost:8000/knowledgebase/v1/topics/create",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8000",
-              "path": ["knowledgebase", "v1", "topics", "create"]
+              "raw": "{{VKSUrl}}knowledgebase/v1/topics/create",
+              "host": ["{{VKSUrl}}knowledgebase"],
+              "path": ["v1", "topics", "create"]
             }
           },
-          "response": []
+          "response": [
+            {
+              "name": "Topic CREATE",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-auth-token",
+                    "value": "bearer {{VKStoken}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"topicName\": \"testNewS\",\n    \"description\": \"test\"\n}"
+                },
+                "url": {
+                  "raw": "{{VKSUrl}}knowledgebase/v1/topics/create",
+                  "host": ["{{VKSUrl}}knowledgebase"],
+                  "path": ["v1", "topics", "create"]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "body": "{\n    \"responseCode\": \"OK\",\n    \"message\": \"Topic created successfully.\",\n    \"result\": [\n        {\n            \"topicName\": \"testNewS\",\n            \"description\": \"test\",\n            \"deleted\": false,\n            \"createdBy\": \"507f1f77bcf86cd799439011\",\n            \"updatedBy\": \"507f1f77bcf86cd799439011\",\n            \"_id\": \"6344dc55b8d7e869b09521bb\",\n            \"updatedAt\": \"2022-10-11T03:00:37.016Z\",\n            \"createdAt\": \"2022-10-11T03:00:37.016Z\",\n            \"__v\": 0\n        }\n    ],\n    \"meta\": {}\n}"
+            }
+          ]
+        },
+        {
+          "name": "SubTopic CREATE",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {
+              "content-type": true
+            }
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-auth-token",
+                "value": "bearer {{VKStoken}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"topicName\": \"testNewd\",\n    \"description\": \"test\",\n    \"topicId\":\"632d1e22827ed48eab7585e5\",\n    \"suggestionId\":\"6344ddbe50a91344dd6d8329\"\n}"
+            },
+            "url": {
+              "raw": "{{VKSUrl}}knowledgebase/v1/topics/create",
+              "host": ["{{VKSUrl}}knowledgebase"],
+              "path": ["v1", "topics", "create"]
+            }
+          },
+          "response": [
+            {
+              "name": "SubTopic CREATE",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-auth-token",
+                    "value": "bearer {{VKStoken}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"topicName\": \"testNew\",\n    \"description\": \"test\",\n    \"topicId\":\"632d1e22827ed48eab7585e5\",\n    \"suggestionId\":\"\"\n}"
+                },
+                "url": {
+                  "raw": "{{VKSUrl}}knowledgebase/v1/topics/create",
+                  "host": ["{{VKSUrl}}knowledgebase"],
+                  "path": ["v1", "topics", "create"]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "body": "{\n    \"responseCode\": \"OK\",\n    \"message\": \"Topic created successfully.\",\n    \"result\": [\n        {\n            \"topicId\": \"632d1e22827ed48eab7585e5\",\n            \"suggestionId\": \"6344ddbe50a91344dd6d8329\",\n            \"topicName\": \"testNewd\",\n            \"description\": \"test\",\n            \"deleted\": false,\n            \"createdBy\": \"507f1f77bcf86cd799439011\",\n            \"updatedBy\": \"507f1f77bcf86cd799439011\",\n            \"_id\": \"6344ddcb50a91344dd6d832c\",\n            \"updatedAt\": \"2022-10-11T03:06:51.532Z\",\n            \"createdAt\": \"2022-10-11T03:06:51.532Z\",\n            \"__v\": 0\n        }\n    ],\n    \"meta\": {}\n}"
+            }
+          ]
         },
         {
           "name": "DELETE",
@@ -202,6 +443,11 @@
                 "key": "Content-Type",
                 "value": "application/json",
                 "type": "text"
+              },
+              {
+                "key": "X-auth-token",
+                "value": "bearer {{VKStoken}}",
+                "type": "text"
               }
             ],
             "body": {
@@ -209,20 +455,228 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://localhost:8000/knowledgebase/v1/topics/delete/6339ab4bb0719dc0a39cfb1a",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8000",
-              "path": [
-                "knowledgebase",
-                "v1",
-                "topics",
-                "delete",
-                "6339ab4bb0719dc0a39cfb1a"
-              ]
+              "raw": "{{VKSUrl}}knowledgebase/v1/topics/delete/632d1e22827ed48eab7585e5",
+              "host": ["{{VKSUrl}}knowledgebase"],
+              "path": ["v1", "topics", "delete", "632d1e22827ed48eab7585e5"]
             }
           },
-          "response": []
+          "response": [
+            {
+              "name": "DELETE",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-auth-token",
+                    "value": "bearer {{VKStoken}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{VKSUrl}}knowledgebase/v1/topics/delete/632d1e22827ed48eab7585e5",
+                  "host": ["{{VKSUrl}}knowledgebase"],
+                  "path": ["v1", "topics", "delete", "632d1e22827ed48eab7585e5"]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "body": "{\n    \"responseCode\": \"OK\",\n    \"message\": \"TOPIC_UPDATED\",\n    \"result\": [],\n    \"meta\": {}\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "X-auth-token",
+                "value": "bearer {{VKStoken}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"topicName\":\"Ankit Sabhapati shahu\",\n    \"description\":\"djsnjsbfjbdsjfbds\",\n    \"topicId\":\"632d1e22827ed48eab7585e5\",\n    \"suggestionId\":\"63445e13c9bd21d8862c3641\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{VKSUrl}}knowledgebase/v1/topics/create/632d206f00728c63cbf13590",
+              "host": ["{{VKSUrl}}knowledgebase"],
+              "path": ["v1", "topics", "create", "632d206f00728c63cbf13590"]
+            }
+          },
+          "response": [
+            {
+              "name": "Update",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "X-auth-token",
+                    "value": "bearer {{VKStoken}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"topicName\":\"Ankit Sabhapati shahu\",\n    \"description\":\"djsnjsbfjbdsjfbds\",\n    \"topicId\":\"632d1e22827ed48eab7585e5\",\n    \"suggestionId\":\"63445e13c9bd21d8862c3641\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{VKSUrl}}knowledgebase/v1/topics/create/632d206f00728c63cbf13590",
+                  "host": ["{{VKSUrl}}knowledgebase"],
+                  "path": ["v1", "topics", "create", "632d206f00728c63cbf13590"]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "body": "{\n    \"responseCode\": \"OK\",\n    \"message\": \"Topic updated successfully.\",\n    \"result\": [],\n    \"meta\": {}\n}"
+            }
+          ]
+        },
+        {
+          "name": "Read Topics",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-auth-token",
+                "value": "bearer {{VKStoken}}",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{VKSUrl}}knowledgebase/v1/topics/read",
+              "host": ["{{VKSUrl}}knowledgebase"],
+              "path": ["v1", "topics", "read"]
+            }
+          },
+          "response": [
+            {
+              "name": "Read Topics",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-auth-token",
+                    "value": "bearer {{VKStoken}}",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{VKSUrl}}knowledgebase/v1/topics/read",
+                  "host": ["{{VKSUrl}}knowledgebase"],
+                  "path": ["v1", "topics", "read"]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "body": "{\n    \"responseCode\": \"OK\",\n    \"message\": \"TOPICS_FETCHED\",\n    \"result\": [\n        {\n            \"_id\": \"632d1e22827ed48eab7585e5\",\n            \"topicName\": \"Ankit\",\n            \"description\": \"djsnjsbfjbdsjfbds\"\n        },\n        {\n            \"_id\": \"634459da727ef467fdc8d2e0\",\n            \"topicName\": \"testNew\",\n            \"description\": \"test\"\n        },\n        {\n            \"_id\": \"6344dc55b8d7e869b09521bb\",\n            \"topicName\": \"testNewS\",\n            \"description\": \"test\"\n        }\n    ],\n    \"meta\": {}\n}"
+            }
+          ]
+        },
+        {
+          "name": "Read Sub Topics",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-auth-token",
+                "value": "bearer {{VKStoken}}",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{VKSUrl}}knowledgebase/v1/topics/read/632d1e22827ed48eab7585e5",
+              "host": ["{{VKSUrl}}knowledgebase"],
+              "path": ["v1", "topics", "read", "632d1e22827ed48eab7585e5"]
+            }
+          },
+          "response": [
+            {
+              "name": "Read Sub Topics",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-auth-token",
+                    "value": "bearer {{VKStoken}}",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{VKSUrl}}knowledgebase/v1/topics/read/632d1e22827ed48eab7585e5",
+                  "host": ["{{VKSUrl}}knowledgebase"],
+                  "path": ["v1", "topics", "read", "632d1e22827ed48eab7585e5"]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "body": "{\n    \"responseCode\": \"OK\",\n    \"message\": \"TOPICS_FETCHED\",\n    \"result\": [\n        {\n            \"_id\": \"632d1e523fa16c12f68c12db\",\n            \"topicId\": \"632d1e22827ed48eab7585e5\",\n            \"topicName\": \"Ankit Sabhapati shahud\",\n            \"description\": \"djsnjsbfjbdsjfbds\",\n            \"suggestion\": [\n                {\n                    \"_id\": \"63445a5c38326b262c95e484\",\n                    \"attachments\": [\n                        {\n                            \"type\": \"image\",\n                            \"url\": \"www.google.com/image-name\"\n                        },\n                        {\n                            \"type\": \"pdf\",\n                            \"url\": \"www.google.com/pdf-name\"\n                        }\n                    ],\n                    \"blog\": \"string html code\",\n                    \"updatedAt\": \"2022-10-10T17:46:04.277Z\",\n                    \"createdAt\": \"2022-10-10T17:46:04.277Z\",\n                    \"__v\": 0\n                }\n            ]\n        },\n        {\n            \"_id\": \"632d206f00728c63cbf13590\",\n            \"topicId\": \"632d1e22827ed48eab7585e5\",\n            \"topicName\": \"Ankit Sabhapati shahu\",\n            \"description\": \"djsnjsbfjbdsjfbds\",\n            \"suggestion\": [\n                {\n                    \"_id\": \"63445e13c9bd21d8862c3641\",\n                    \"attachments\": [\n                        {\n                            \"type\": \"image\",\n                            \"url\": \"www.google.com/image-name\"\n                        },\n                        {\n                            \"type\": \"pdf\",\n                            \"url\": \"www.google.com/pdf-name\"\n                        }\n                    ],\n                    \"blog\": \"string html code 2\",\n                    \"updatedAt\": \"2022-10-10T18:01:55.360Z\",\n                    \"createdAt\": \"2022-10-10T18:01:55.360Z\",\n                    \"__v\": 0\n                }\n            ]\n        },\n        {\n            \"_id\": \"63324d0e78bfaaea5726c80c\",\n            \"topicId\": \"632d1e22827ed48eab7585e5\",\n            \"topicName\": \"Ankit Sabhapati shahu\",\n            \"description\": \"djsnjsbfjbdsjfbds\",\n            \"suggestion\": []\n        },\n        {\n            \"_id\": \"6344ddcb50a91344dd6d832c\",\n            \"topicId\": \"632d1e22827ed48eab7585e5\",\n            \"topicName\": \"testNewd\",\n            \"description\": \"test\",\n            \"suggestion\": [\n                {\n                    \"_id\": \"6344ddbe50a91344dd6d8329\",\n                    \"attachments\": [\n                        {\n                            \"type\": \"image\",\n                            \"url\": \"www.google.com/image-name\"\n                        },\n                        {\n                            \"type\": \"pdf\",\n                            \"url\": \"www.google.com/pdf-name\"\n                        }\n                    ],\n                    \"blog\": \"string html code 2\",\n                    \"updatedAt\": \"2022-10-11T03:06:38.831Z\",\n                    \"createdAt\": \"2022-10-11T03:06:38.831Z\",\n                    \"__v\": 0\n                }\n            ]\n        }\n    ],\n    \"meta\": {}\n}"
+            }
+          ]
         }
       ]
     },

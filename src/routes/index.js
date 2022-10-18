@@ -17,7 +17,6 @@ module.exports = (app) => {
   app.use(expressValidator());
 
   async function router(req, res, next) {
-    console.log(req.params.version, req.params.controller, req.params.method);
     let controllerResponse;
     let validationError;
 
@@ -94,22 +93,22 @@ module.exports = (app) => {
     validator,
     router
   );
-  // app.all(
-  //   process.env.APPLICATION_BASE_URL + ":version/:controller/:file/:method",
-  //   validator,
-  //   router
-  // );
+
   app.all(
     process.env.APPLICATION_BASE_URL + ":version/:controller/:method/:id",
     validator,
     router
   );
-
-  // app.all(
-  //   process.env.APPLICATION_BASE_URL + ":version/:controller/:file/:method/:id",
-  //   validator,
-  //   router
-  // );
+  app.all(
+    process.env.APPLICATION_BASE_URL + ":version/:controller/:file/:method",
+    validator,
+    router
+  );
+  app.all(
+    process.env.APPLICATION_BASE_URL + ":version/:controller/:file/:method/:id",
+    validator,
+    router
+  );
 
   app.use((req, res, next) => {
     res.status(404).json({

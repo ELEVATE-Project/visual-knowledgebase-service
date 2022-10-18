@@ -102,7 +102,7 @@ module.exports = class topicsHelper {
         deleted: true,
       };
       let filter = {
-        _id: ObjectId(id),
+        _id: ObjectId(_id),
       };
       const result = await topics.updateOneForm(filter, bodyData, {});
       if (result === "TOPIC_DELETION_FAILED") {
