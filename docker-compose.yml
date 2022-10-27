@@ -11,6 +11,7 @@ services:
       - mongo-data:/data/db
     logging:
       driver: none
+
   knowledgebase:
     build: "./"
     image: elevate/knowledgebase:1.0

@@ -28,5 +28,6 @@ const suggestionSchema = new Schema({
 });
 
 const Suggestions = db.model("suggestions", suggestionSchema);
+suggestionSchema.index({ blog: "text" });
 
 module.exports = Suggestions;
