@@ -17,5 +17,6 @@
   "SUGGESTION_FETCHED_SUCCESSFULLY": "suggestion details fetched successfully",
   "TOPIC_DELETION_FAILED": "Topic deletion failed.",
   "TOPIC_DELETED_SUCCESSFULLY": "Topic deleted successfully.",
-  "TOPICS_FETCHED": "Topic fetched successfully."
+  "TOPICS_FETCHED": "Topic fetched successfully.",
+  "SEARCH_FETCHED": "Fetched successfully"
 }

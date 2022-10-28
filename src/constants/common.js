@@ -43,6 +43,7 @@ module.exports = {
   guestUrls: [
     "/knowledgebase/v1/topics/read",
     "/knowledgebase/v1/suggestion/read",
+    "/knowledgebase/v1/search/find",
   ],
   internalAccessUrls: [],
 };

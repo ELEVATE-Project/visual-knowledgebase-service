@@ -116,4 +116,17 @@ module.exports = class UserEntityData {
       }
     });
   }
+  static find(data) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const result = await Topics.find(
+          { $text: { $search: data }, deleted: false },
+          { score: { $meta: "textScore" } }
+        ).sort({ score: { $meta: "textScore" } });
+        resolve(result);
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
 };

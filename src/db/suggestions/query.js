@@ -64,15 +64,15 @@ module.exports = class SuggestionData {
     const filter = { _id: suggestionId };
     return new Promise(async (resolve, reject) => {
       try {
-        const suggetionData = await Suggestion.findOne(filter);
-        if (suggetionData == null) {
+        const suggestionData = await Suggestion.findOne(filter);
+        if (suggestionData == null) {
           resolve({
             message: "SUGGESTION_NOT_FOUND",
           });
         }
         resolve({
           message: "SUGGESTION_FETCHED_SUCCESSFULLY",
-          data: [suggetionData],
+          data: [suggestionData],
         });
       } catch (error) {
         reject(error);
@@ -85,6 +85,19 @@ module.exports = class SuggestionData {
       try {
         const usersData = await Suggestion.find(filter, projection);
         resolve(usersData);
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+  static find(data) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const result = await Suggestion.find(
+          { $text: { $search: data } },
+          { score: { $meta: "textScore" } }
+        ).sort({ score: { $meta: "textScore" } });
+        resolve(result);
       } catch (error) {
         reject(error);
       }

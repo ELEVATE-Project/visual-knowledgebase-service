@@ -30,7 +30,6 @@ const topicsSchema = new Schema({
     default: false,
     required: true,
   },
-
   createdBy: {
     type: mongoose.Types.ObjectId,
     required: true,
@@ -42,5 +41,9 @@ const topicsSchema = new Schema({
 });
 
 const TopicsEntity = db.model("topics", topicsSchema);
+topicsSchema.index(
+  { topicName: "text", description: "text", deleted: 1 },
+  { partialFilterExpression: { deleted: false } }
+);
 
 module.exports = TopicsEntity;
