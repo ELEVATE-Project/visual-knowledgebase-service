@@ -114,7 +114,7 @@ module.exports = class topicsHelper {
       }
       return common.successResponse({
         statusCode: httpStatusCode.accepted,
-        message: result,
+        message: "TOPIC_DELETED_SUCCESSFULLY",
       });
     } catch (error) {
       throw error;

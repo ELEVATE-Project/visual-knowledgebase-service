@@ -62,7 +62,6 @@ module.exports = class UserEntityData {
           topicId: null,
           deleted: false,
         };
-        console.log("reched to qury function");
         const userEntityData = await Topics.find(filter, {
           _id: 1,
           topicName: 1,
@@ -70,7 +69,7 @@ module.exports = class UserEntityData {
           topicId: 1,
           suggestionId: 1,
         });
-        console.log(userEntityData);
+        //console.log(userEntityData);
         resolve(userEntityData);
       } catch (error) {
         reject(error);
@@ -108,7 +107,7 @@ module.exports = class UserEntityData {
             },
           },
         ]);
-        console.log(subTopic);
+        //console.log(subTopic);
         resolve(subTopic);
       } catch (error) {
         console.log(error);
