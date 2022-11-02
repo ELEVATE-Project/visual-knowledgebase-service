@@ -7,7 +7,6 @@
 
 module.exports = {
   find: (req) => {
-    req.checkQuery("text").notEmpty().withMessage("text param is empty");
     if (req.query.filter) {
       req
         .checkQuery("filter")

@@ -93,10 +93,15 @@ module.exports = class SuggestionData {
   static find(data) {
     return new Promise(async (resolve, reject) => {
       try {
-        const result = await Suggestion.find(
-          { $text: { $search: data } },
-          { score: { $meta: "textScore" } }
-        ).sort({ score: { $meta: "textScore" } });
+        let result;
+        if (data == "undefined") {
+          result = await Suggestion.find();
+        } else {
+          result = await Suggestion.find(
+            { $text: { $search: data } },
+            { score: { $meta: "textScore" } }
+          ).sort({ score: { $meta: "textScore" } });
+        }
         resolve(result);
       } catch (error) {
         reject(error);
